@@ -30,7 +30,7 @@ A pixel-art Puerto Rican solitaire game built for the web and deployed on [Remix
 </p>
 
 ## About
-- **Author:** [Your Name or Handle]
+- **Author:** [@haaz](https://farcaster.xyz/haaz.eth)
 - **Deployed on:** [Remix.gg](https://remix.gg)
 - **License:** MIT
 

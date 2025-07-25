@@ -1,0 +1,20 @@
+# Node/npm
+node_modules/
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Build
+/dist
+/build
+
+# Misc
+*.log 

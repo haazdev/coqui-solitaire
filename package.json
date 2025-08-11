@@ -1,0 +1,63 @@
+{
+  "name": "coqui-solitaire",
+  "version": "1.1.0",
+  "description": "A Puerto Rican-themed Klondike solitaire game for Remix.gg/Farcade platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -p 8000",
+    "test": "echo \"No tests configured\"",
+    "build": "echo \"No build required - static HTML game\""
+  },
+  "keywords": [
+    "solitaire",
+    "card-game",
+    "farcade",
+    "remix-gg",
+    "html5-game",
+    "canvas",
+    "puerto-rico",
+    "coqui",
+    "mobile-game",
+    "web-game"
+  ],
+  "author": "haaz.eth",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haazdev/coqui-solitaire.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haazdev/coqui-solitaire/issues"
+  },
+  "homepage": "https://remix.gg/coqui-solitaire",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "game": {
+    "platform": "farcade",
+    "type": "solitaire",
+    "players": 1,
+    "orientation": "portrait",
+    "touchEnabled": true,
+    "hapticFeedback": true,
+    "sdk": "@farcade/game-sdk",
+    "aspectRatio": "9:16",
+    "minResolution": {
+      "width": 400,
+      "height": 600
+    }
+  },
+  "farcade": {
+    "gameId": "coqui-solitaire",
+    "category": "card",
+    "ageRating": "E",
+    "leaderboard": true,
+    "achievements": false,
+    "multiplayer": false,
+    "offlineCapable": true
+  }
+}

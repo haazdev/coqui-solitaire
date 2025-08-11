@@ -97,14 +97,19 @@ The game is designed to be deployed on Remix.gg/Farcade platform. Files are opti
 
 ## Credits
 
-- **Developer**: haaz.eth
+- **Developer**: haaz.eth (https://haaz.dev)
+- **Repository**: https://github.com/haazdev/coqui-solitaire
 - **Theme**: Puerto Rican culture and coquí frogs
 - **Platform**: Built for Remix.gg / Farcade
 - **Testing**: Community playtesting feedback incorporated
 
 ## License
 
-MIT License - See LICENSE file for details
+MIT License with Attribution Requirement - See LICENSE file for details.
+
+When using this software, you must provide visible attribution including:
+- "Coquí Solitaire by haaz.eth"
+- Link to: https://github.com/haazdev/coqui-solitaire
 
 ## Feedback & Bug Reports
 

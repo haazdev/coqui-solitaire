@@ -21,16 +21,19 @@
     "mobile-game",
     "web-game"
   ],
-  "author": "haaz.eth",
+  "author": {
+    "name": "haaz.eth",
+    "url": "https://haaz.dev"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/haazdev/coqui-solitaire.git"
+    "url": "git+https://github.com/haazdev/coqui-solitaire.git"
   },
   "bugs": {
     "url": "https://github.com/haazdev/coqui-solitaire/issues"
   },
-  "homepage": "https://remix.gg/coqui-solitaire",
+  "homepage": "https://github.com/haazdev/coqui-solitaire#readme",
   "engines": {
     "node": ">=14.0.0"
   },

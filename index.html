@@ -2,11 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+<<<<<<< HEAD
     <title>Coquí Solitaire - Fixed</title>
+=======
+    <title>Coquí Solitaire</title>
+>>>>>>> origin/main
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=portrait"
     />
+<<<<<<< HEAD
     <!-- Privacy: Referrer Policy -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <!-- Privacy: Baseline Content Security Policy (compatible with current CDN usage) -->
@@ -25,24 +30,57 @@
           if (obj === window && prop === "ethereum") {
             // Silently ignore ethereum redefinitions to prevent errors
             console.log("Prevented ethereum redefinition");
+=======
+    <!-- Prevent ethereum property conflicts -->
+    <script>
+      (function() {
+        // Store original ethereum if it exists
+        const originalEthereum = window.ethereum;
+        const originalDescriptor = Object.getOwnPropertyDescriptor(window, 'ethereum');
+        
+        // Create a safe wrapper to prevent redefinition errors
+        let ethereumProxy = originalEthereum;
+        
+        // Override defineProperty to catch ethereum redefinitions
+        const originalDefineProperty = Object.defineProperty;
+        Object.defineProperty = function(obj, prop, descriptor) {
+          if (obj === window && prop === 'ethereum') {
+            // Silently ignore ethereum redefinitions to prevent errors
+            console.log('Prevented ethereum redefinition');
+>>>>>>> origin/main
             return obj;
           }
           return originalDefineProperty.call(this, obj, prop, descriptor);
         };
+<<<<<<< HEAD
 
         // Restore after SDK loads
         window.addEventListener("load", function () {
           setTimeout(function () {
+=======
+        
+        // Restore after SDK loads
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+>>>>>>> origin/main
             Object.defineProperty = originalDefineProperty;
             if (originalEthereum && !window.ethereum) {
               try {
                 if (originalDescriptor) {
+<<<<<<< HEAD
                   Object.defineProperty(window, "ethereum", originalDescriptor);
+=======
+                  Object.defineProperty(window, 'ethereum', originalDescriptor);
+>>>>>>> origin/main
                 } else {
                   window.ethereum = originalEthereum;
                 }
               } catch (e) {
+<<<<<<< HEAD
                 console.log("Could not restore ethereum:", e);
+=======
+                console.log('Could not restore ethereum:', e);
+>>>>>>> origin/main
               }
             }
           }, 100);
@@ -75,10 +113,15 @@
       #gameContainer {
         position: relative;
         width: 100%;
+<<<<<<< HEAD
         max-width: 440px;
         height: 100vh;
         height: 100dvh; /* Dynamic viewport height for mobile */
         max-height: 730px;
+=======
+        max-width: 400px;
+        height: 100vh;
+>>>>>>> origin/main
         margin: 0 auto;
         background: linear-gradient(180deg, #4a90e2 0%, #2563eb 30%, #1e40af 100%);
         overflow: hidden;
@@ -97,7 +140,11 @@
 
       #gameUI {
         position: absolute;
+<<<<<<< HEAD
         top: 15px;
+=======
+        top: 12px;
+>>>>>>> origin/main
         left: 0;
         right: 0;
         z-index: 10;
@@ -108,6 +155,7 @@
       }
 
       #gameInfo {
+<<<<<<< HEAD
         color: #ffffff; /* text white */
         font-size: 11px;
         text-shadow: 1px 1px 0px #000000; /* subtle lift on dark */
@@ -115,6 +163,15 @@
         padding: 7px 9px;
         border-radius: 4px;
         min-width: 132px;
+=======
+        color: #ffffff;
+        font-size: 10px;
+        text-shadow: 1px 1px 0px #000000;
+        pointer-events: none;
+        padding: 6px 8px;
+        border-radius: 4px;
+        min-width: 120px;
+>>>>>>> origin/main
         font-family: "Press Start 2P", monospace;
         display: flex;
         flex-direction: column;
@@ -122,6 +179,7 @@
         align-items: center;
         gap: 4px;
         white-space: nowrap;
+<<<<<<< HEAD
         background: #000000; /* black */
         border: 2px solid #dc143c; /* red */
         box-shadow: 0 0 8px rgba(135, 206, 235, 0.35); /* teal glow */
@@ -136,17 +194,28 @@
         color: #ffffff;
       } /* white */
 
+=======
+        background: #000000;
+        border: 2px solid #f8b4d9;
+      }
+
+>>>>>>> origin/main
       #gameInfo span {
         display: inline-block;
         margin: 0 1px;
         line-height: 1.2;
       }
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> origin/main
       #gameInfo .row {
         display: flex;
         gap: 8px;
       }
 
+<<<<<<< HEAD
       #giveUpBtn {
         position: absolute;
         bottom: max(16px, calc(env(safe-area-inset-bottom, 0) + 12px));
@@ -176,17 +245,48 @@
         bottom: max(16px, calc(env(safe-area-inset-bottom, 0) + 12px));
         left: 15px;
         background: #87ceeb;
+=======
+      #instructions {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ffffff;
+        font-size: 10px;
+        text-align: center;
+        z-index: 15;
+        text-shadow: 1px 1px 0px #000000;
+        display: none;
+        font-family: "Press Start 2P", monospace;
+      }
+
+      #instructions div {
+        margin: 3px 0;
+        line-height: 1.2;
+      }
+
+      #giveUpBtn {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: #f8b4d9;
+>>>>>>> origin/main
         color: #000000;
         padding: 8px 12px;
         font-size: 8px;
         font-family: "Press Start 2P", monospace;
         cursor: pointer;
         border-radius: 4px;
+<<<<<<< HEAD
         text-shadow: 1px 1px 0px #ffffff;
+=======
+        text-shadow: none;
+>>>>>>> origin/main
         pointer-events: auto;
         display: none;
         z-index: 15;
         border: 2px solid #000000;
+<<<<<<< HEAD
         transition: all 0.2s ease;
       }
 
@@ -372,20 +472,30 @@
       /* Emphasis inside instructions uses teal */
       #instructions strong {
         color: #87ceeb;
+=======
+      }
+
+      #giveUpBtn:hover {
+        background: #e898c4;
+>>>>>>> origin/main
       }
 
       /* Mobile optimizations */
       @media (max-width: 480px) {
+<<<<<<< HEAD
         #gameContainer {
           height: 100vh;
           height: 100svh; /* Small viewport height for better mobile compatibility */
         }
 
+=======
+>>>>>>> origin/main
         #gameInfo {
           font-size: 8px;
           padding: 4px 6px;
           min-width: 100px;
         }
+<<<<<<< HEAD
 
         #giveUpBtn,
         #helpBtn,
@@ -414,6 +524,11 @@
           transform: translateX(-50%);
         }
 
+=======
+        #instructions {
+          font-size: 6px;
+        }
+>>>>>>> origin/main
         .btn {
           width: 32px;
           height: 32px;
@@ -429,6 +544,7 @@
   </head>
   <body>
     <div id="gameContainer">
+<<<<<<< HEAD
       <canvas
         id="gameCanvas"
         width="400"
@@ -436,6 +552,9 @@
         role="application"
         aria-label="Coquí Solitaire game area"
       ></canvas>
+=======
+      <canvas id="gameCanvas" width="400" height="600"></canvas>
+>>>>>>> origin/main
 
       <div id="gameUI">
         <div id="gameInfo">
@@ -449,6 +568,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <div id="debugInfo">
         <div>Debug Info:</div>
         <div id="debugText"></div>
@@ -490,11 +610,29 @@
       (() => {
         /*
          * Coquí Solitaire - A Puerto Rican themed solitaire game - FIXED VERSION
+=======
+      <div id="instructions">
+        <div>DRAG CARDS TO MOVE</div>
+        <div>DOUBLE-TAP FOR AUTO-MOVE</div>
+      </div>
+
+      <div id="giveUpBtn">GIVE UP</div>
+    </div>
+
+    <script>
+      (() => {
+        /*
+         * Coquí Solitaire - A Puerto Rican themed solitaire game
+>>>>>>> origin/main
          * Copyright (c) 2025 haaz.eth
          * Licensed under MIT with Attribution Requirements
          * Repository: https://github.com/haazdev/coqui-solitaire
          */
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/main
         // Game constants
         const CANVAS_WIDTH = 400;
         const CANVAS_HEIGHT = 600;
@@ -509,9 +647,15 @@
         const CARD_W = 51;
         const CARD_H = 58;
         const MARGIN = 5;
+<<<<<<< HEAD
         const TOP_MARGIN = 60; // Space for scoreboard + foundation row
         const FOUNDATION_TO_STOCK_GAP = 13; // Gap between foundation and stock/waste
         const CARD_STACK_OFFSET = 14;
+=======
+        const TOP_MARGIN = 50; // Space for scoreboard + foundation row
+        const FOUNDATION_TO_STOCK_GAP = 13; // Gap between foundation and stock/waste
+        const CARD_STACK_OFFSET = 16;
+>>>>>>> origin/main
 
         let canvas, ctx;
         let gameStartTime = null;
@@ -519,6 +663,7 @@
         let isMuted = false;
         let gameInstance = null;
         let showStartScreen = true;
+<<<<<<< HEAD
         let instructionsVisible = false; // deprecated with tutorial, retained for minimal UI toggles
         let showTutorial = false;
         let tutorialStep = 0;
@@ -543,6 +688,9 @@
             `;
           }
         }
+=======
+        let instructionsVisible = false;
+>>>>>>> origin/main
 
         // Audio setup - using web URL for coqui sound
         let coquiSound = null;
@@ -560,11 +708,16 @@
         // Load game assets
         const backgroundImage = new Image();
         backgroundImage.src =
+<<<<<<< HEAD
           "https://lqy3lriiybxcejon.public.blob.vercel-storage.com/c07a48ff-9019-4d16-980b-990a2aef5607/Tropical%20Coqui%20Pixel%20Art-FGfRwAxGJXmdBiyE8enLkfwRRkiR0x.png?t1Cw";
+=======
+          "https://lqy3lriiybxcejon.public.blob.vercel-storage.com/c07a48ff-9019-4d16-980b-990a2aef5607/8-Bit%20Pixel%20Landscape%20El%20Yunque%20%282%29-5F9qFwKT1D79WXjL8swWjf9ndfdIEx.png?pQyd";
+>>>>>>> origin/main
         backgroundImage.onerror = () => console.log("Background image failed to load");
 
         const backImage = new Image();
         backImage.src =
+<<<<<<< HEAD
           "https://lqy3lriiybxcejon.public.blob.vercel-storage.com/c07a48ff-9019-4d16-980b-990a2aef5607/card-back-0n32cq3Rl35oC8hvTbhp6ByCtfVTTv.png?LYQe";
         backImage.onerror = () => console.log("Card back image failed to load");
 
@@ -664,6 +817,12 @@
           document.getElementById("undoBtn").setAttribute("tabindex", "0");
           if (gameInstance) gameInstance.updateUndoButton();
         }
+=======
+          "https://lqy3lriiybxcejon.public.blob.vercel-storage.com/c07a48ff-9019-4d16-980b-990a2aef5607/haazdev_httpss.mj.runOUFaofjVlXE_16-bit_pixel_art_close_up_of_b7ef6f57-4671-40e4-984f-e18ba74cf369_1-gRLVnr5Zyp2pauEOrBnaZsxJXEkIl5.png?LLJS";
+        backImage.onerror = () => console.log("Card back image failed to load");
+
+        const startImage = new Image();
+>>>>>>> origin/main
         startImage.src =
           "https://lqy3lriiybxcejon.public.blob.vercel-storage.com/c07a48ff-9019-4d16-980b-990a2aef5607/16%20Bit%20Style%20Pixel%20Art-LyY834xNGJOgukoYpaWOszsnviurGV.png?ffaN";
         startImage.onerror = () => console.log("Start screen image failed to load");
@@ -702,17 +861,21 @@
             this.anim = null;
             this.highlight = false; // highlight flag
             this.invalid = false; // invalid move feedback
+<<<<<<< HEAD
             this.hasFlipped = false; // track flip state during animation
             this.isWasteVisible = false; // track if this card should be visible in waste pile
             this.isDragging = false; // track if card is being dragged
             this.originalX = 0; // store original position for drag cancel
             this.originalY = 0;
+=======
+>>>>>>> origin/main
           }
 
           draw() {
             // Handle animation
             if (this.anim) {
               const t = Math.min(1, (Date.now() - this.anim.start) / this.anim.dur);
+<<<<<<< HEAD
 
               if (this.anim.isFlip) {
                 // Eased animation for more natural movement
@@ -741,6 +904,11 @@
                 this.anim = null;
                 this.hasFlipped = false; // Reset for next flip
               }
+=======
+              this.x = this.anim.fromX + (this.anim.toX - this.anim.fromX) * t;
+              this.y = this.anim.fromY + (this.anim.toY - this.anim.fromY) * t;
+              if (t >= 1) this.anim = null;
+>>>>>>> origin/main
             }
 
             ctx.save();
@@ -764,6 +932,7 @@
             }
 
             if (!this.faceUp) {
+<<<<<<< HEAD
               // Card back with gradient design
               if (backImage.complete && backImage.naturalWidth > 0) {
                 ctx.drawImage(backImage, this.x, this.y, CARD_W, CARD_H);
@@ -776,6 +945,20 @@
 
                 ctx.fillStyle = gradient;
                 ctx.fillRect(this.x, this.y, CARD_W, CARD_H);
+=======
+              // 8-bit card back with original blue aesthetic
+              if (backImage.complete && backImage.naturalWidth > 0) {
+                ctx.drawImage(backImage, this.x, this.y, CARD_W, CARD_H);
+              } else {
+                // Simple card back
+                ctx.fillStyle = "#1e40af";
+                ctx.fillRect(this.x, this.y, CARD_W, CARD_H);
+
+                // Simple cross pattern
+                ctx.fillStyle = "#60a5fa";
+                ctx.fillRect(this.x + CARD_W / 2 - 2, this.y + 4, 4, CARD_H - 8);
+                ctx.fillRect(this.x + 4, this.y + CARD_H / 2 - 2, CARD_W - 8, 4);
+>>>>>>> origin/main
               }
 
               // Border
@@ -801,11 +984,16 @@
               else if (this.val === 13) valText = "K";
 
               // Large suit symbol in center
+<<<<<<< HEAD
               ctx.font = '18px "Press Start 2P"';
+=======
+              ctx.font = 'bold 20px "Press Start 2P"';
+>>>>>>> origin/main
               ctx.textAlign = "center";
               ctx.textBaseline = "middle";
               ctx.fillText(this.suit, this.x + CARD_W / 2, this.y + CARD_H / 2);
 
+<<<<<<< HEAD
               // Value and suit in top-left corner, side by side
               ctx.font = '11px "Press Start 2P"';
               ctx.textAlign = "left";
@@ -815,6 +1003,14 @@
               // Position suit right next to the value
               ctx.font = '11px "Press Start 2P"';
               ctx.fillText(this.suit, this.x + 3 + ctx.measureText(valText).width + 2, this.y + 3);
+=======
+              // Value and small suit in top-left corner
+              ctx.font = '10px "Press Start 2P"';
+              ctx.textAlign = "left";
+              ctx.textBaseline = "top";
+              ctx.fillText(valText, this.x + 4, this.y + 4);
+              ctx.fillText(this.suit, this.x + 22, this.y + 4);
+>>>>>>> origin/main
             }
             ctx.restore();
           }
@@ -833,6 +1029,7 @@
               dur,
             };
           }
+<<<<<<< HEAD
 
           // Special flip animation for deck dealing
           animateFlip(nx, ny, dur = 250, delay = 0) {
@@ -850,6 +1047,8 @@
               };
             }, delay);
           }
+=======
+>>>>>>> origin/main
         }
 
         class Pile {
@@ -864,6 +1063,7 @@
             return this.cards[this.cards.length - 1];
           }
 
+<<<<<<< HEAD
           canAccept(card, seq, sourcePile = null) {
             if (this.type === PILE_FOUNDATION) {
               if (seq.length > 1) return false;
@@ -874,6 +1074,11 @@
                 const t = this.top();
                 return card.suit === t.suit && card.val === t.val + 1;
               }
+=======
+          canAccept(card, seq) {
+            if (this.type === PILE_FOUNDATION) {
+              if (seq.length > 1) return false;
+>>>>>>> origin/main
               if (this.cards.length === 0) return card.val === 1; // Ace
               const t = this.top();
               return card.suit === t.suit && card.val === t.val + 1;
@@ -896,7 +1101,13 @@
             // For tableau piles, extend the hit area to include stacked cards
             if (this.type === PILE_TABLEAU && this.cards.length > 0) {
               const lastCard = this.cards[this.cards.length - 1];
+<<<<<<< HEAD
               return px >= this.x && py >= this.y && px <= this.x + CARD_W && py <= lastCard.y + CARD_H;
+=======
+              return px >= this.x && py >= this.y && 
+                     px <= this.x + CARD_W && 
+                     py <= lastCard.y + CARD_H;
+>>>>>>> origin/main
             }
             return px >= this.x && py >= this.y && px <= this.x + CARD_W && py <= this.y + CARD_H;
           }
@@ -911,6 +1122,7 @@
               ctx.setLineDash([]);
             }
 
+<<<<<<< HEAD
             // Draw cards, but skip dragging cards
             this.cards.forEach((card, i) => {
               // Skip if card is being dragged
@@ -951,6 +1163,20 @@
                 if (shouldDraw) {
                   card.draw();
                 }
+=======
+            // Draw cards, but skip animating cards and dragging cards
+            this.cards.forEach((card, i) => {
+              // Skip if card is being dragged or animating
+              if (!card.anim && (!draggingCards || !draggingCards.includes(card))) {
+                if (this.type === PILE_TABLEAU) {
+                  card.x = this.x;
+                  card.y = this.y + i * CARD_STACK_OFFSET;
+                } else {
+                  card.x = this.x;
+                  card.y = this.y;
+                }
+                card.draw();
+>>>>>>> origin/main
               }
             });
           }
@@ -962,10 +1188,13 @@
             this.drag = null;
             this.moves = 0;
             this.score = 0;
+<<<<<<< HEAD
             this.wasteCycles = 0; // Track waste pile cycling for scoring
             this.lastTapTime = 0;
             this.lastTapCoords = { x: 0, y: 0 };
             this.moveHistory = []; // Store move history for undo
+=======
+>>>>>>> origin/main
             this.init();
           }
 
@@ -1041,6 +1270,7 @@
 
           bind() {
             // Unified event handling for better responsiveness
+<<<<<<< HEAD
             // Use pointerup to avoid conflict with button clicks within the tutorial overlay
             canvas.addEventListener("pointerup", (e) => {
               if (showStartScreen) {
@@ -1050,11 +1280,22 @@
                 return;
               }
             });
+=======
+>>>>>>> origin/main
             canvas.addEventListener("pointerdown", (e) => this.onPointerDown(e));
             canvas.addEventListener("pointermove", (e) => this.onPointerMove(e));
             canvas.addEventListener("pointerup", (e) => this.onPointerUp(e));
             canvas.addEventListener("pointercancel", (e) => this.onPointerUp(e));
+<<<<<<< HEAD
             canvas.addEventListener("dblclick", (e) => this.onDoubleClick(e));
+=======
+            canvas.addEventListener("click", (e) => this.onClick(e));
+            canvas.addEventListener("dblclick", (e) => this.onDoubleClick(e));
+            
+            // Prevent default touch behaviors
+            canvas.addEventListener("touchstart", (e) => e.preventDefault(), { passive: false });
+            canvas.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+>>>>>>> origin/main
           }
 
           getCoords(e) {
@@ -1072,6 +1313,7 @@
             e.preventDefault();
 
             if (showStartScreen) {
+<<<<<<< HEAD
               // Pointer handles tutorial; click early-exits
               return;
             }
@@ -1080,10 +1322,38 @@
           }
 
           handleStockClick(coords) {
+=======
+              showStartScreen = false;
+              gameStartTime = Date.now();
+              instructionsVisible = true;
+
+              // Show UI elements when game starts
+              document.getElementById("gameUI").style.display = "flex";
+              document.getElementById("instructions").style.display = "block";
+              document.getElementById("giveUpBtn").style.display = "block";
+
+              // Hide instructions after 30 seconds
+              setTimeout(() => {
+                if (instructionsVisible) {
+                  document.getElementById("instructions").style.display = "none";
+                  instructionsVisible = false;
+                }
+              }, 30000);
+
+              return;
+            }
+
+            if (gameWon) return;
+
+            const coords = this.getCoords(e);
+
+            // Handle stock pile click only
+>>>>>>> origin/main
             const stock = this.piles.find((p) => p.type === PILE_STOCK);
             const waste = this.piles.find((p) => p.type === PILE_WASTE);
 
             if (stock.contains(coords.x, coords.y)) {
+<<<<<<< HEAD
               // Reentrancy guard to prevent overlapping stock interactions
               if (this.isStockBusy) return true;
               this.isStockBusy = true;
@@ -1156,6 +1426,24 @@
                 cardsToMove.reverse().forEach((card, index) => {
                   card.faceUp = false; // Ensure face-down
                   card.isWasteVisible = false; // Reset visibility flag
+=======
+              if (stock.cards.length > 0) {
+                // Draw 1 card at a time (easier gameplay)
+                const card = stock.cards.pop();
+                card.faceUp = true; // Flip to face-up
+                waste.cards.push(card);
+                // Set position immediately to prevent flying cards
+                card.x = waste.x;
+                card.y = waste.y;
+                card.animateTo(waste.x, waste.y, 150); // Shorter animation
+              } else if (waste.cards.length > 0) {
+                // Reset: move all waste cards back to stock face down
+                const cardsToMove = [...waste.cards]; // Copy array to prevent issues
+                waste.cards = []; // Clear waste pile
+                
+                cardsToMove.reverse().forEach((card, index) => {
+                  card.faceUp = false; // Ensure face-down
+>>>>>>> origin/main
                   stock.cards.push(card);
                   // Set position immediately to prevent flying cards
                   card.x = stock.x;
@@ -1165,6 +1453,7 @@
                     card.animateTo(stock.x, stock.y, 100);
                   }, index * 20);
                 });
+<<<<<<< HEAD
 
                 // Record this deck reset operation in move history
                 const deckReset = {
@@ -1187,10 +1476,13 @@
               } else {
                 // Nothing to do, release guard immediately
                 this.isStockBusy = false;
+=======
+>>>>>>> origin/main
               }
               if (window.FarcadeSDK) {
                 window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
               }
+<<<<<<< HEAD
               return true;
             }
             return false;
@@ -1210,12 +1502,17 @@
             this.lastTapCoords = coords;
 
             return isDouble;
+=======
+              return;
+            }
+>>>>>>> origin/main
           }
 
           onPointerDown(e) {
             if (showStartScreen || gameWon || !gameInstance) return;
             e.preventDefault();
             const coords = this.getCoords(e);
+<<<<<<< HEAD
 
             // Check for double-tap first (for auto-move)
             if (this.isDoubleTap(coords)) {
@@ -1249,6 +1546,8 @@
             }
 
             // Try to start dragging
+=======
+>>>>>>> origin/main
             this.startDrag(coords.x, coords.y);
           }
 
@@ -1269,6 +1568,7 @@
           onDoubleClick(e) {
             if (showStartScreen || gameWon) return;
             e.preventDefault();
+<<<<<<< HEAD
             const now = Date.now();
             if (now < suppressNextDblClickUntil || autoMoveLock || now - lastAutoMoveAt < 250) {
               return;
@@ -1285,6 +1585,15 @@
           startDrag(px, py) {
             // Allow dragging from tableau, waste, and foundation piles
             const draggablePiles = this.piles.filter((p) => p.type === PILE_TABLEAU || p.type === PILE_WASTE || p.type === PILE_FOUNDATION);
+=======
+            const coords = this.getCoords(e);
+            this.tryAutoMove(coords.x, coords.y);
+          }
+
+          startDrag(px, py) {
+            // Only allow dragging from tableau or waste
+            const draggablePiles = this.piles.filter((p) => p.type === PILE_TABLEAU || p.type === PILE_WASTE);
+>>>>>>> origin/main
 
             for (let pile of draggablePiles) {
               // Check from top to bottom to find the clicked card
@@ -1292,6 +1601,7 @@
                 const card = pile.cards[i];
                 if (card.faceUp && card.contains(px, py)) {
                   if (pile.type === PILE_WASTE) {
+<<<<<<< HEAD
                     // Only allow moving the top visible waste card
                     if (card.isWasteVisible && i === pile.cards.length - 1) {
                       this.drag = {
@@ -1314,12 +1624,16 @@
                     }
                   } else if (pile.type === PILE_FOUNDATION) {
                     // Only allow moving the top card from foundation
+=======
+                    // Only allow moving the top card of the waste pile
+>>>>>>> origin/main
                     if (i === pile.cards.length - 1) {
                       this.drag = {
                         pile,
                         seq: [card],
                         offX: px - card.x,
                         offY: py - card.y,
+<<<<<<< HEAD
                         startX: px,
                         startY: py,
                         stackStartIndex: i,
@@ -1332,6 +1646,13 @@
                       card.isDragging = true;
                       if (window.FarcadeSDK) window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
                       return true;
+=======
+                        stackStartIndex: i,
+                        stackLength: 1,
+                      };
+                      card.highlight = true;
+                      if (window.FarcadeSDK) window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
+>>>>>>> origin/main
                     }
                   } else {
                     // For tableau, only allow moving a valid face-up sequence starting at the selected card
@@ -1347,12 +1668,16 @@
                         seq,
                         offX: px - card.x,
                         offY: py - card.y,
+<<<<<<< HEAD
                         startX: px,
                         startY: py,
+=======
+>>>>>>> origin/main
                         stackStartIndex: i,
                         stackLength: seq.length,
                         isTableauStack: seq.length > 1,
                       };
+<<<<<<< HEAD
                       seq.forEach((c, idx) => {
                         // Store original positions for all cards in sequence
                         c.originalX = c.x;
@@ -1368,11 +1693,25 @@
               }
             }
             return false;
+=======
+                      seq.forEach((c) => (c.highlight = true));
+                      if (window.FarcadeSDK) window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
+                    }
+                  }
+                  return;
+                }
+              }
+            }
+>>>>>>> origin/main
           }
 
           updateDrag(px, py) {
             if (!this.drag) return;
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> origin/main
             // Move all cards in the sequence together
             this.drag.seq.forEach((card, i) => {
               card.x = px - this.drag.offX;
@@ -1380,6 +1719,7 @@
             });
           }
 
+<<<<<<< HEAD
           cancelDrag() {
             if (!this.drag) return;
 
@@ -1409,12 +1749,21 @@
               c.highlight = false;
               c.isDragging = false;
             });
+=======
+          endDrag(px, py) {
+            if (!this.drag) return;
+            
+            const { pile, seq, isTableauStack } = this.drag;
+            // Remove highlight from all cards
+            seq.forEach((c) => (c.highlight = false));
+>>>>>>> origin/main
             const card = seq[0];
             let moved = false;
 
             // Try to drop on valid pile
             for (let targetPile of this.piles) {
               if (targetPile !== pile && targetPile.contains(px, py)) {
+<<<<<<< HEAD
                 if (targetPile.canAccept(card, seq, pile)) {
                   // Store move history for undo before making the move
                   const startIndex = pile.cards.indexOf(card);
@@ -1443,6 +1792,15 @@
                     if (pile.type === PILE_WASTE) {
                       c.isWasteVisible = false;
                     }
+=======
+                if (targetPile.canAccept(card, seq)) {
+                  // Remove cards from source pile
+                  const startIndex = pile.cards.indexOf(card);
+                  const movingCards = pile.cards.splice(startIndex);
+                  
+                  // Add to target pile
+                  movingCards.forEach((c, i) => {
+>>>>>>> origin/main
                     targetPile.cards.push(c);
                     if (targetPile.type === PILE_TABLEAU) {
                       c.animateTo(
@@ -1453,9 +1811,15 @@
                       c.animateTo(targetPile.x, targetPile.y);
                     }
                   });
+<<<<<<< HEAD
 
                   this.moves++;
 
+=======
+                  
+                  this.moves++;
+                  
+>>>>>>> origin/main
                   // Traditional Klondike scoring:
                   if (targetPile.type === PILE_FOUNDATION) {
                     this.score += 10; // To foundation: 10 points
@@ -1465,22 +1829,33 @@
                     this.score -= 15; // From foundation: -15 points (penalty)
                   }
                   // No points for tableau to tableau moves in traditional scoring
+<<<<<<< HEAD
 
+=======
+                  
+>>>>>>> origin/main
                   // Reveal top card if needed
                   if (pile.type === PILE_TABLEAU && pile.cards.length > 0) {
                     const topCard = pile.top();
                     if (!topCard.faceUp) {
+<<<<<<< HEAD
                       moveData.wasFlipped = true;
                       moveData.flipCard = topCard;
+=======
+>>>>>>> origin/main
                       topCard.faceUp = true;
                       this.score += 5; // Turning over tableau card: 5 points
                     }
                   }
+<<<<<<< HEAD
 
                   // Add to move history
                   this.moveHistory.push(moveData);
                   this.updateUndoButton();
 
+=======
+                  
+>>>>>>> origin/main
                   playSound();
                   if (window.FarcadeSDK) window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
                   this.checkWin();
@@ -1493,6 +1868,7 @@
                 }
               }
             }
+<<<<<<< HEAD
 
             // If not moved, snap back to stored original position
             if (!moved) {
@@ -1532,6 +1908,21 @@
                 }
               });
             });
+=======
+            
+            // If not moved, snap back to original position
+            if (!moved) {
+              seq.forEach((card, i) => {
+                const originalIndex = pile.cards.indexOf(card);
+                if (pile.type === PILE_TABLEAU) {
+                  card.animateTo(pile.x, pile.y + (originalIndex !== -1 ? originalIndex : i) * CARD_STACK_OFFSET);
+                } else {
+                  card.animateTo(pile.x, pile.y);
+                }
+              });
+            }
+            this.drag = null;
+>>>>>>> origin/main
           }
 
           // Helper: check if a sequence is valid (alternating colors, descending order)
@@ -1551,15 +1942,24 @@
           }
 
           tryAutoMove(px, py) {
+<<<<<<< HEAD
             // Find the card that was double-clicked - now including foundations
             const movablePiles = this.piles.filter((p) => p.type === PILE_WASTE || p.type === PILE_TABLEAU || p.type === PILE_FOUNDATION);
 
             for (let pile of movablePiles) {
               // Check from top to bottom to find the clicked card
+=======
+            // Only allow auto-move if user double-taps a face-up card
+            const movablePiles = this.piles.filter((p) => p.type === PILE_WASTE || p.type === PILE_TABLEAU);
+
+            for (let pile of movablePiles) {
+              // Only check face-up cards, starting from the top
+>>>>>>> origin/main
               for (let i = pile.cards.length - 1; i >= 0; i--) {
                 const card = pile.cards[i];
                 // Only allow auto-move for face-up cards
                 if (card && card.faceUp && card.contains(px, py)) {
+<<<<<<< HEAD
                   // Auto-move only the exact card tapped, not hidden sequences below
                   // Block any other auto-moves until this concludes
                   if (pile.type === PILE_WASTE) {
@@ -1591,6 +1991,70 @@
                       if (this.tryMoveToTableau(pile, seq)) return true;
                     }
                   }
+=======
+                  // Try foundations first
+                  const foundations = this.piles.filter((p) => p.type === PILE_FOUNDATION);
+                  for (let foundation of foundations) {
+                    if (foundation.canAccept(card, [card])) {
+                      // Remove the card from its current pile
+                      pile.cards.splice(i, 1);
+                      foundation.cards.push(card);
+                      card.animateTo(foundation.x, foundation.y);
+
+                      this.moves++;
+                      this.score += 10; // To foundation: 10 points
+
+                      // Reveal card if needed
+                      if (pile.type === PILE_TABLEAU && pile.cards.length > 0) {
+                        const topCard = pile.top();
+                        if (!topCard.faceUp) {
+                          topCard.faceUp = true;
+                          this.score += 5; // Turning over tableau card: 5 points
+                        }
+                      }
+
+                      playSound();
+                      if (window.FarcadeSDK) {
+                        window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
+                      }
+
+                      this.checkWin();
+                      return true;
+                    }
+                  }
+
+                  // Try other tableau piles
+                  const tableauPiles = this.piles.filter((p) => p.type === PILE_TABLEAU && p !== pile);
+                  for (let tableau of tableauPiles) {
+                    if (tableau.canAccept(card, [card])) {
+                      // Remove the card from its current pile
+                      pile.cards.splice(i, 1);
+                      tableau.cards.push(card);
+                      card.animateTo(tableau.x, tableau.y + (tableau.cards.length - 1) * CARD_STACK_OFFSET);
+
+                      this.moves++;
+                      // No score for tableau to tableau moves
+
+                      // Reveal card if needed
+                      if (pile.type === PILE_TABLEAU && pile.cards.length > 0) {
+                        const topCard = pile.top();
+                        if (!topCard.faceUp) {
+                          topCard.faceUp = true;
+                          this.score += 5; // Turning over tableau card: 5 points
+                        }
+                      }
+
+                      playSound();
+                      if (window.FarcadeSDK) {
+                        window.FarcadeSDK.singlePlayer.actions.hapticFeedback();
+                      }
+
+                      return true;
+                    }
+                  }
+
+                  // If we get here, no valid move was found for this face-up card
+>>>>>>> origin/main
                   return false;
                 }
               }
@@ -1598,6 +2062,7 @@
             return false;
           }
 
+<<<<<<< HEAD
           tryMoveToFoundation(pile, seq) {
             if (seq.length > 1) return false; // Foundations only accept single cards
 
@@ -1868,6 +2333,8 @@
             }
           }
 
+=======
+>>>>>>> origin/main
           checkWin() {
             if (gameWon) return;
 
@@ -1882,6 +2349,7 @@
 
               // Traditional scoring doesn't include time bonus in standard mode
               // but we'll keep a small bonus for completing the game
+<<<<<<< HEAD
               if (timeElapsed < 300) {
                 // Under 5 minutes
                 this.score += 200;
@@ -1898,6 +2366,18 @@
                 window.FarcadeSDK.singlePlayer.actions.gameOver({ score: finalScore });
               }
               // NO OTHER ALERTS OR POP-UPS
+=======
+              if (timeElapsed < 300) { // Under 5 minutes
+                this.score += 200;
+              } else if (timeElapsed < 600) { // Under 10 minutes  
+                this.score += 100;
+              }
+
+              // Farcade SDK
+              if (window.FarcadeSDK) {
+                window.FarcadeSDK.singlePlayer.actions.gameOver({ score: this.score });
+              }
+>>>>>>> origin/main
             }
           }
 
@@ -1910,6 +2390,7 @@
 
             document.getElementById("timer").textContent =
               `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+<<<<<<< HEAD
 
             // Use final score if game is won, otherwise current score
             const displayScore = gameWon ? finalScore : this.score;
@@ -1918,6 +2399,10 @@
 
             // Update debug info
             updateDebugInfo();
+=======
+            document.getElementById("score").textContent = this.score;
+            document.getElementById("moves").textContent = this.moves;
+>>>>>>> origin/main
           }
 
           loop() {
@@ -2002,6 +2487,7 @@
           }
         }
 
+<<<<<<< HEAD
         function resetGame(skipStartScreen = false) {
           gameStartTime = null;
           gameWon = false;
@@ -2029,6 +2515,16 @@
             document.getElementById("undoBtn").style.display = "none";
             document.getElementById("helpBtn").style.display = "none";
           }
+=======
+        function resetGame() {
+          gameStartTime = null;
+          gameWon = false;
+          showStartScreen = true;
+          instructionsVisible = false;
+          document.getElementById("gameUI").style.display = "none";
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("giveUpBtn").style.display = "none";
+>>>>>>> origin/main
 
           // Remove all event listeners from canvas (to avoid stacking)
           if (canvas) {
@@ -2059,13 +2555,19 @@
 
           // Hide UI elements on start screen
           document.getElementById("gameUI").style.display = "none";
+<<<<<<< HEAD
           document.getElementById("giveUpBtn").style.display = "none";
           document.getElementById("undoBtn").style.display = "none";
           document.getElementById("instructions").style.display = "none";
+=======
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("giveUpBtn").style.display = "none";
+>>>>>>> origin/main
 
           // Farcade SDK setup
           if (window.FarcadeSDK) {
             // When the game is fully loaded and ready to play
+<<<<<<< HEAD
             try {
               window.FarcadeSDK.singlePlayer.actions.ready();
             } catch (_) {}
@@ -2090,12 +2592,32 @@
             if (!gameInstance || showStartScreen) return;
 
             // Skip confirmation dialog - just end the game
+=======
+            window.FarcadeSDK.singlePlayer.actions.ready();
+
+            // Handle play again requests
+            window.FarcadeSDK.on("play_again", () => {
+              resetGame();
+            });
+
+            // Handle mute/unmute
+            window.FarcadeSDK.on("toggle_mute", (data) => {
+              isMuted = data.isMuted;
+            });
+          }
+
+          // Give up button handler
+          document.getElementById("giveUpBtn").addEventListener("click", () => {
+            if (!gameInstance || showStartScreen) return;
+
+>>>>>>> origin/main
             // Calculate partial score based on progress
             const foundations = gameInstance.piles.filter((p) => p.type === "FOUNDATION");
             const cardsInFoundations = foundations.reduce((sum, pile) => sum + pile.cards.length, 0);
             const completionBonus = Math.floor((cardsInFoundations / 52) * 100);
             gameInstance.score += completionBonus;
 
+<<<<<<< HEAD
             // Store final score
             finalScore = gameInstance.score;
 
@@ -2103,10 +2625,17 @@
             gameWon = true;
             if (window.FarcadeSDK) {
               window.FarcadeSDK.singlePlayer.actions.gameOver({ score: finalScore });
+=======
+            // End game with current score
+            gameWon = true;
+            if (window.FarcadeSDK) {
+              window.FarcadeSDK.singlePlayer.actions.gameOver({ score: gameInstance.score });
+>>>>>>> origin/main
             }
 
             document.getElementById("giveUpBtn").style.display = "none";
           });
+<<<<<<< HEAD
 
           // Undo button handler
           document.getElementById("undoBtn").addEventListener("click", () => {
@@ -2123,6 +2652,8 @@
           // Tutorial navigation
           document.getElementById("tutorialNext").addEventListener("click", nextTutorialStep);
           document.getElementById("tutorialPrev").addEventListener("click", prevTutorialStep);
+=======
+>>>>>>> origin/main
         });
       })();
     </script>
